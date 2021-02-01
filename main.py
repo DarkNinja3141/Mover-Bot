@@ -18,6 +18,9 @@ class MyBot(Bot):
         self.loop.create_task(self.startup())
         self.remove_command("help")  # Remove help command
 
+    async def on_command_error(self, ctx: Context, exception):
+        pass
+
     def _signal(self):
         try:
             self.loop.remove_signal_handler(signal.SIGTERM)
