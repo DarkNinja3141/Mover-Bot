@@ -1,6 +1,8 @@
 import random
+import signal
+import time
 
-from discord import TextChannel, Message, Member, Embed, Color
+from discord import TextChannel, Message, Member, Embed, Color, Status
 from discord.ext import commands
 from discord.ext.commands import Bot, Context, ConversionError
 
@@ -11,23 +13,34 @@ class MyBot(Bot):
     def __init__(self, config_: Config):
         self.config: Config = config_
         super().__init__(command_prefix=self.config.prefix, owner_id=self.config.owner,
+                         status=Status.online,
                          chunk_guilds_at_startup=False)
         self.loop.create_task(self.startup())
 
+    def _signal(self):
+        try:
+            self.loop.remove_signal_handler(signal.SIGTERM)
+            self.loop.add_signal_handler(signal.SIGTERM, lambda: self.loop.create_task(self.terminate()))
+        except NotImplementedError:
+            pass
+
     async def startup(self):
         await self.wait_until_ready()
+        self._signal()
         print('Logged in as')
         print(self.user.name)
         print(self.user.id)
         print('------')
 
+    async def terminate(self):
+        try:
+            await self.change_presence(status=Status.offline)
+        finally:
+            await self.logout()
+            time.sleep(1)
+
 
 client: MyBot = MyBot(config)
-
-
-@client.command(name="logout")
-async def logout(ctx: Context):
-    await client.logout()
 
 
 @client.command(name="v")
