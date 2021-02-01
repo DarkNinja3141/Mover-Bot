@@ -16,6 +16,7 @@ class MyBot(Bot):
                          status=Status.online,
                          chunk_guilds_at_startup=False)
         self.loop.create_task(self.startup())
+        self.remove_command("help")  # Remove help command
 
     def _signal(self):
         try:
