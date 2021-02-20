@@ -51,7 +51,7 @@ class MyBot(Bot):
 
 
 client: MyBot = MyBot(config)
-slash = SlashCommand(client, auto_register=True, auto_delete=True)
+slash = SlashCommand(client, sync_commands=True)
 client.add_cogs()
 
 
