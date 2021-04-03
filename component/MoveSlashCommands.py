@@ -21,7 +21,8 @@ class MoveSlashCommands(MyCog):
                                required=True,
                            ),
                        ])
-                       #guild_ids=[514223116893945856])
+                       # ],
+                       # guild_ids=[514223116893945856])
     async def move_slash(self, ctx: SlashContext, destination: GuildChannel):
         try:
             _, destination = move_check(ctx, destination)
