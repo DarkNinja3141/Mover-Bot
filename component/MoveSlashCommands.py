@@ -1,10 +1,10 @@
-from discord import TextChannel
 from discord.abc import GuildChannel
 from discord_slash import SlashContext, cog_ext, SlashCommandOptionType
 from discord_slash.utils import manage_commands
 
 from .MyCog import MyCog
-from command.move import get_pre_move_text, get_move_text
+from command.move import *
+from util.error import CommandUseFailure
 
 
 class MoveSlashCommands(MyCog):
@@ -23,9 +23,11 @@ class MoveSlashCommands(MyCog):
                        ])
                        #guild_ids=[514223116893945856])
     async def move_slash(self, ctx: SlashContext, destination: GuildChannel):
-        if not isinstance(destination, TextChannel):
-            await self.move_slash_error(ctx, destination)
-            return
+        try:
+            _, destination = move_check(ctx, destination)
+        except CommandUseFailure as error:
+            await ctx.respond(eat=True)
+            await ctx.send_hidden(content=error.message)
         origin_text, dest_text = get_pre_move_text()
         await ctx.respond(eat=False)
         origin = await ctx.send(content=origin_text)
@@ -33,6 +35,3 @@ class MoveSlashCommands(MyCog):
         origin_embed, dest_embed = get_move_text(origin, dest, ctx.author)
         await origin.edit(content="", embed=origin_embed)
         await dest.edit(content=None, embed=dest_embed)
-
-    async def move_slash_error(self, ctx: SlashContext, destination: GuildChannel):
-        await ctx.send_hidden(content="Destination must be a text channel.")

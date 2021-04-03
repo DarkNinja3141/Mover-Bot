@@ -1,4 +1,36 @@
-from discord import Message, Member, Color, Embed
+from typing import Union
+
+from discord import Message, Member, Color, Embed, TextChannel
+from discord.abc import GuildChannel
+from discord.ext.commands import Context
+from discord_slash import SlashContext
+
+from util.error import CommandUseFailure
+
+__all__ = [
+    "move_check",
+    "get_pre_move_text",
+    "get_move_text",
+]
+
+
+def move_check(ctx: Union[Context, SlashContext], destination: GuildChannel) -> (Union[Context, SlashContext], TextChannel):
+    if ctx.guild is None:
+        raise CommandUseFailure("Command must be performed in a guild.")
+    if not isinstance(destination, TextChannel):
+        raise CommandUseFailure("Destination must be a text channel.")
+    author: Member = ctx.author
+    bot: Member = ctx.guild.get_member(ctx.bot.user.id)
+    origin: TextChannel = ctx.channel
+    if origin == destination:
+        raise CommandUseFailure("Destination must be a different channel.")
+    if not destination.permissions_for(author).send_messages:
+        raise CommandUseFailure("You must have permission to send messages in the destination channel.")
+    if not origin.permissions_for(bot).send_messages:
+        raise CommandUseFailure("Bot must have permission to send messages in the current channel.")
+    if not destination.permissions_for(bot).send_messages:
+        raise CommandUseFailure("Bot must have permission to send messages in the destination channel.")
+    return ctx, destination
 
 
 def get_pre_move_text():
