@@ -27,10 +27,9 @@ class MoveSlashCommands(MyCog):
         try:
             _, destination = move_check(ctx, destination)
         except CommandUseFailure as error:
-            await ctx.respond(eat=True)
-            await ctx.send_hidden(content=error.message)
+            await ctx.send(content=error.message, hidden=True)
+            return
         origin_text, dest_text = get_pre_move_text()
-        await ctx.respond(eat=False)
         origin = await ctx.send(content=origin_text)
         dest = await destination.send(dest_text)
         origin_embed, dest_embed = get_move_text(origin, dest, ctx.author)
