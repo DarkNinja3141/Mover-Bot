@@ -30,6 +30,10 @@ def move_check(ctx: Union[Context, SlashContext], destination: GuildChannel) -> 
         raise CommandUseFailure("Bot must have permission to send messages in the current channel.")
     if not destination.permissions_for(bot).send_messages:
         raise CommandUseFailure("Bot must have permission to send messages in the destination channel.")
+    if not origin.permissions_for(bot).embed_links:
+        raise CommandUseFailure("Bot must have permission to embed links in the current channel.")
+    if not destination.permissions_for(bot).embed_links:
+        raise CommandUseFailure("Bot must have permission to embed links in the destination channel.")
     return ctx, destination  # Return passed parameters in order to perform type casting on destination
 
 

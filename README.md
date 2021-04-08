@@ -2,7 +2,7 @@
 
 Mover is a simple bot for creating quick links to jump between channels. The intention is to help move conversations to the appropriate channels, smoothly and effortlessly.
 
-Add it to your server using [this link](https://discord.com/api/oauth2/authorize?client_id=777717464280596550&permissions=2048&scope=bot%20applications.commands).
+Add it to your server using [this link](https://discord.com/api/oauth2/authorize?client_id=777717464280596550&permissions=18432&scope=bot%20applications.commands).
 
 ## Usage
 
