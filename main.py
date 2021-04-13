@@ -46,7 +46,7 @@ class MyBot(Bot):
         try:
             await self.change_presence(status=Status.offline)
         finally:
-            await self.logout()
+            await self.close()
             time.sleep(1)
 
 
