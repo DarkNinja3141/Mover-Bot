@@ -1,7 +1,7 @@
 import signal
 import time
 
-from discord import Status, Intents
+from discord import Status, Intents, Activity, ActivityType
 from discord.ext.commands import Bot, Context
 from discord_slash import SlashCommand
 
@@ -37,6 +37,7 @@ class MyBot(Bot):
     async def startup(self):
         await self.wait_until_ready()
         self._signal()
+        await self.change_presence(activity=Activity(type=ActivityType.watching, name="/move | git.io/JOOyt"))
         print('Logged in as')
         print(self.user.name)
         print(self.user.id)
