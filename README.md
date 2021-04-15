@@ -1,6 +1,6 @@
 # Mover, a bot for Discord
 
-[![Python version](https://img.shields.io/badge/python-3.8.7-brightgreen)](https://www.python.org/downloads/release/python-387/) [![discord.py PyPI](https://img.shields.io/badge/discord.py-v1.71-blue)](https://pypi.org/project/discord.py/) [![discord-py-slash-commands PyPI](https://img.shields.io/badge/discord--py--slash--commands-1.1.2-blue)](https://pypi.org/project/discord-py-slash-commands/)
+[![Python version](https://img.shields.io/badge/dynamic/yaml?color=brightgreen&label=python&query=%24.python&url=https%3A%2F%2Fraw.githubusercontent.com%2FDarkNinja3141%2FMover-Bot%2Fmaster%2Fversions.yaml)](https://www.python.org/downloads/release/python-387/) [![discord.py PyPI](https://img.shields.io/badge/dynamic/yaml?color=blue&label=discord.py&query=%24%5B%22discord.py%22%5D&url=https%3A%2F%2Fraw.githubusercontent.com%2FDarkNinja3141%2FMover-Bot%2Fmaster%2Fversions.yaml)](https://pypi.org/project/discord.py/) [![discord-py-slash-command PyPI](https://img.shields.io/badge/dynamic/yaml?color=blue&label=discord-py-slash-command&query=%24%5B%22discord-py-slash-command%22%5D&url=https%3A%2F%2Fraw.githubusercontent.com%2FDarkNinja3141%2FMover-Bot%2Fmaster%2Fversions.yaml)](https://pypi.org/project/discord-py-slash-command/)
 
 [![Discord invite](https://img.shields.io/discord/831679611150270474.svg?color=7289DA&label=Dark%27s%20Bots&logo=discord&labelColor=697EC4&logoColor=white)](https://discord.gg/SazhZEFZu5)
 
