@@ -1,5 +1,9 @@
 # Mover, a bot for Discord
 
+[![Python version](https://img.shields.io/badge/python-3.8.7-brightgreen)](https://www.python.org/downloads/release/python-387/) [![discord.py PyPI](https://img.shields.io/badge/discord.py-v1.71-blue)](https://pypi.org/project/discord.py/) [![discord-py-slash-commands PyPI](https://img.shields.io/badge/discord--py--slash--commands-1.1.2-blue)](https://pypi.org/project/discord-py-slash-commands/)
+
+[![Discord invite](https://img.shields.io/discord/831679611150270474.svg?color=7289DA&label=Dark%27s%20Bots&logo=discord&labelColor=697EC4&logoColor=white)](https://discord.gg/SazhZEFZu5)
+
 Mover is a simple bot for creating quick links to jump between channels. The intention is to help move conversations to the appropriate channels, smoothly and effortlessly.
 
 Add it to your server using [this link](https://discord.com/api/oauth2/authorize?client_id=777717464280596550&permissions=18432&scope=bot%20applications.commands).
